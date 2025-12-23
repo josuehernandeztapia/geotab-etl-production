@@ -1,0 +1,16 @@
+# .dockerignore para optimizar build
+node_modules
+.git
+.env
+.env.local
+.env.production
+*.log
+.vercel
+.next
+README.md
+eda.ipynb
+exports/
+sql/
+test.py
+test_neon.py
+mygeotab.API

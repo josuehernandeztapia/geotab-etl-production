@@ -1,0 +1,38 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: geotab-etl
+  labels:
+    cloud.googleapis.com/location: us-central1
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: "1"
+        run.googleapis.com/memory: "512Mi"
+        run.googleapis.com/cpu: "1000m"
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      containers:
+      - name: geotab-etl-1
+        image: gcr.io/gen-lang-client-0929797058/geotab-etl:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://neondb_owner:npg_ImI7iZsUiyen@ep-shiny-term-adcwbvo5-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+        - name: GEOTAB_DATABASE
+          value: "conductores"
+        - name: GEOTAB_USERNAME
+          value: "contacto@conductores.lat"
+        - name: GEOTAB_PASSWORD
+          value: "Conductores2025"
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "8080"
+        resources:
+          limits:
+            cpu: "1000m"
+            memory: "512Mi"
