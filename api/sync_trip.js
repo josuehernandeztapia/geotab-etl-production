@@ -9,7 +9,9 @@ module.exports = async (req, res) => {
   try {
     const protocol = req.headers["x-forwarded-proto"] || "https";
     const host = req.headers["x-forwarded-host"] || req.headers.host;
-    const baseUrl = process.env.APP_URL || (host ? `${protocol}://${host}` : null);
+    const baseUrl = process.env.APP_URL ||
+                    (host ? `${protocol}://${host}` : null) ||
+                    "https://geotab-api-186570917523.us-west1.run.app";
 
     if (!baseUrl) {
       throw new Error("APP_URL/host missing for trip_batch call");
