@@ -20,7 +20,7 @@ app.get('/health', (req, res) => {
 // Root endpoint
 app.get('/', (req, res) => {
   res.json({
-    message: 'Geotab ETL API - Migrated from Vercel to Cloud Run',
+    message: 'Geotab ETL API - Node.js Service (Updated)',
     endpoints: [
       'GET /health - Health check',
       'POST /api/sync - Main sync endpoint',
