@@ -27,7 +27,7 @@ jobs:
 
     - name: Deploy to Cloud Run
       run: |
-        gcloud run deploy geotab-api \
+        gcloud run deploy geotab-etl-nodejs \
           --source . \
           --region us-west1 \
           --allow-unauthenticated \
@@ -44,7 +44,7 @@ jobs:
         sleep 30
 
         # Get service URL
-        SERVICE_URL=$(gcloud run services describe geotab-api --region us-west1 --format="value(status.url)")
+        SERVICE_URL=$(gcloud run services describe geotab-etl-nodejs --region us-west1 --format="value(status.url)")
 
         # Test health endpoint
         curl -f "${SERVICE_URL}/health" || exit 1
