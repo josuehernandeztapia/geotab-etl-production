@@ -18,7 +18,7 @@ Cloud Scheduler → Cloud Run → Neon PostgreSQL
 - `GET /` - Información del servicio
 - `GET /health` - Health check
 - `POST /api/sync` - Sincronización principal (FaultData, Device, User, Zone, Rule)
-- `POST /api/sync_trip` - Sincronización de trips
+- `POST /api/sync_trip` - Sincronización de trips (separado del sync principal)
 - `POST /api/trip_batch` - Procesamiento batch de trips
 
 ## 🚀 Deployment
